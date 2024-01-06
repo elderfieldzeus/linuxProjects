@@ -20,7 +20,7 @@ int main(){
 }
 
 void welcome(){
-    printf("\033[H\033[J");
+    //printf("\033[H\033[J");
     printf("WELCOME TO ZEUS' TO-DO LIST!!!\n");
 }
 
