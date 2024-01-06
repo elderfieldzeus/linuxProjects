@@ -25,7 +25,8 @@ void welcome(){
 }
 
 void init(){
-    FILE *fptr = fopen("todo.txt", "r+");
+    FILE *fptr = fopen("todo.txt", "w+");
+
     char check[100];
     int hasStarted = 0;
     while(fgets(check, 100, fptr) != NULL){
