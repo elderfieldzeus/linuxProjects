@@ -27,8 +27,6 @@ int main(){
         viewNodes(head);
         tryAgain = again();
     }while(tryAgain);
-
-    
 }
 
 void init(LinkedList *head){
