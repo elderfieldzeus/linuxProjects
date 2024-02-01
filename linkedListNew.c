@@ -12,7 +12,6 @@ void display(LinkedList *head);
 
 int main(){
     LinkedList *head = NULL;
-
     insertLast(&head, 6);
     insertLast(&head, 4);
     insertFirst(&head, -1);
