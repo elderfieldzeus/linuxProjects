@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 typedef struct node {
     char *name;
@@ -13,6 +14,7 @@ enum CHOICES {
 
 int homePage();
 char *askForName();
+void capitalize(char *name);
 void insertFront(LIST *head);
 void insertLast(LIST *head);
 void delete(LIST *head);
@@ -30,7 +32,7 @@ int main() {
             case INSERTLAST: insertLast(&head); break;
             case DELETE: delete(&head); break;
             case DISPLAY: display(head); break;
-            default: choice = -1;
+            default: printf("THANKS FOR USING"); choice = -1;
         }
         printf("\n");
     }while(choice != -1);
@@ -55,7 +57,15 @@ char *askForName() {
     char *name = malloc(sizeof(char) * 100);
     scanf(" %[^\n]", name);
     name = realloc(name, sizeof(char) * (strlen(name) + 1));
+    capitalize(name);
     return name;
+}
+
+void capitalize(char *name) {
+    *name = toupper(*name);
+    for(int i = 1; *(name + i) != '\0'; i++) {
+        *(name + i) = tolower(*(name + i));
+    }
 }
 
 void insertFront(LIST *head) {
@@ -100,11 +110,13 @@ void delete(LIST *head) {
         *head = (*head)->next;
         free(temp->name);
         free(temp);
+        printf("NAME DELETED!\n");
     }
     else if(curr != NULL) {
         prev->next = curr->next;
         free(curr->name);
         free(curr);
+        printf("NAME DELETED!\n");
     } 
     else {
         printf("NAME IS NOT FOUND\n");
